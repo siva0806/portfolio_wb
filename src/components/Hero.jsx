@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { FaStar, FaCode, FaLightbulb, FaRocket } from 'react-icons/fa';
-import heroVideo from '../assets/hero-v2.mp4';
+import heroVideo from '../assets/hero-v3.mp4';
 
 const Hero = () => {
     const { scrollY } = useScroll();
@@ -34,7 +34,7 @@ const Hero = () => {
     ];
 
     return (
-        <section id="home" className="hero-section" style={{ overflow: 'hidden', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+        <section id="home" className="hero-section" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
             {/* Background Decorations */}
             {floatingIcons.map(({ Icon, top, left, right, delay }, index) => (
                 <motion.div
@@ -72,7 +72,7 @@ const Hero = () => {
                         ✨ Creative Developer
                     </motion.div>
 
-                    <h1 style={{ lineHeight: 1, marginBottom: '2rem', fontSize: '4.5rem', fontWeight: 900 }}>
+                    <h1 style={{ lineHeight: 1.1, marginBottom: '2rem', fontSize: 'var(--h1-size, 4.5rem)', fontWeight: 900 }}>
                         Hi, I'm <br />
                         <span className="gradient-text">Siva K</span>
                     </h1>
@@ -83,7 +83,7 @@ const Hero = () => {
                         Crafting intelligent and visually stunning user experiences.
                     </p>
 
-                    <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }} className="hero-buttons">
                         <Link to="projects" smooth={true} duration={800} className="glow-button"
                             style={{
                                 padding: '1.2rem 3rem', background: 'var(--primary-color)', color: '#fff',
@@ -107,7 +107,6 @@ const Hero = () => {
                 <motion.div 
                     className="hero-visual" 
                     variants={itemVariants}
-                    style={{ flex: '0 1 800px', position: 'relative' }}
                 >
                     <motion.div
                         className="hero-video-container"
@@ -144,38 +143,12 @@ const Hero = () => {
                             <source src={heroVideo} type="video/mp4" />
                         </video>
                     </motion.div>
-                    
-                    {/* Animated Glow Rings */}
-                    {[1.1, 1.2].map((s, i) => (
-                        <motion.div
-                            key={i}
-                            style={{
-                                position: 'absolute',
-                                width: `${100 * s}%`,
-                                height: `${100 * s}%`,
-                                border: `1px solid var(--primary-color)`,
-                                borderRadius: '50%',
-                                zIndex: -1,
-                                opacity: 0.1,
-                                top: `${(100 - 100 * s) / 2}%`,
-                                left: `${(100 - 100 * s) / 2}%`,
-                            }}
-                            animate={{ 
-                                scale: [1, 1.05, 1],
-                                rotate: i % 2 === 0 ? 360 : -360 
-                            }}
-                            transition={{ 
-                                duration: 15 + i * 5, 
-                                repeat: Infinity, 
-                                ease: "linear" 
-                            }}
-                        />
-                    ))}
                 </motion.div>
             </motion.div>
 
             {/* Scroll Indicator */}
             <motion.div
+                className="scroll-indicator"
                 style={{
                     position: 'absolute',
                     bottom: '2rem',

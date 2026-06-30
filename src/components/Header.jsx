@@ -19,7 +19,7 @@ const Header = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-      className={scrolled ? 'scrolled' : ''}
+      className={scrolled ? 'scrolled header-container' : 'header-container'}
       style={{
         position: 'fixed',
         top: 0,
@@ -59,7 +59,7 @@ const Header = () => {
       </motion.div>
 
       <nav>
-        <ul style={{ display: 'flex', gap: '2.5rem', listStyle: 'none' }}>
+        <ul className="nav-list">
           {['Home', 'About', 'Projects', 'Certificates', 'Contact'].map((item, index) => (
             <motion.li
               key={item}

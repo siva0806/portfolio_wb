@@ -40,12 +40,13 @@ const Certificates = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, type: "spring", stiffness: 100 }}
+                className="section-title"
                 style={{ fontSize: '3.5rem', marginBottom: '4rem', textAlign: 'center', fontFamily: "'Space Grotesk', serif" }}
             >
                 My <span className="gradient-text">Certificates</span>
             </motion.h2>
 
-            <div style={{
+            <div className="projects-grid" style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
                 gap: '3rem',

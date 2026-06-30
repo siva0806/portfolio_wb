@@ -37,12 +37,13 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, type: "spring", stiffness: 100 }}
+                className="section-title"
                 style={{ fontSize: '3.5rem', marginBottom: '4rem', textAlign: 'center', fontFamily: "'Space Grotesk', serif" }}
             >
                 Featured <span className="gradient-text">Projects</span>
             </motion.h2>
 
-            <div style={{
+            <div className="projects-grid" style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
                 gap: '3rem',

@@ -12,19 +12,21 @@ const About = () => {
 
     return (
         <section id="about" style={{ background: 'linear-gradient(180deg, var(--bg-color) 0%, var(--bg-secondary) 100%)' }}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '5rem', maxWidth: '1300px', width: '100%', padding: '0 20px' }}>
+            <div className="about-container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '5rem', maxWidth: '1300px', width: '100%', padding: '0 20px' }}>
                 <motion.div
                     initial={{ opacity: 0, x: -100 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
                     style={{ flex: '1 1 500px' }}
+                    className="about-content"
                 >
                     <motion.h2
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2, duration: 0.6 }}
+                        className="section-title"
                         style={{ fontSize: '3.5rem', marginBottom: '2rem', fontFamily: "'Space Grotesk', serif" }}
                     >
                         About <span className="gradient-text">Me</span>
@@ -57,7 +59,7 @@ const About = () => {
                     </motion.p>
 
                     {/* Skills Icons with enhanced animations */}
-                    <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+                    <div className="about-skills" style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
                         {skills.map((skill, index) => (
                             <motion.div
                                 key={skill.label}
@@ -109,6 +111,7 @@ const About = () => {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
                     style={{ flex: '1 1 500px' }}
+                    className="about-content"
                 >
                     <div className="glass-panel shine-effect" style={{ padding: '3.5rem 2.5rem', position: 'relative' }}>
                         <h3 style={{ fontSize: '2rem', marginBottom: '2rem', fontFamily: "'Space Grotesk', serif" }}>Education</h3>

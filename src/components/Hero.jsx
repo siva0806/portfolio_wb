@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { FaStar, FaCode, FaLightbulb, FaRocket } from 'react-icons/fa';
-import heroVideo from '../assets/hero-v3.mp4';
+
 
 const Hero = () => {
     const { scrollY } = useScroll();
@@ -103,69 +103,70 @@ const Hero = () => {
                     </div>
                 </motion.div>
 
-                {/* Video Visual Content */}
+                {/* Description Visual Content */}
                 <motion.div 
                     className="hero-visual" 
                     variants={itemVariants}
                 >
                     <motion.div
-                        className="hero-video-container"
+                        className="glass-panel shine-effect"
+                        animate={{ y: [-10, 10, -10] }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                         style={{
-                            width: '100%',
-                            aspectRatio: '16/9',
                             position: 'relative',
-                            overflow: 'hidden',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
+                            width: '100%',
+                            maxWidth: '500px',
+                            padding: '2.5rem',
                             borderRadius: '24px',
-                            // Softer edge feathering
-                            WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent), linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
-                            WebkitMaskComposite: 'source-in',
-                            maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent), linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
-                            maskComposite: 'intersect',
+                            background: 'var(--glass-bg)',
+                            backdropFilter: 'blur(20px)',
+                            border: '1px solid var(--glass-border)',
+                            boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
+                            overflow: 'hidden'
                         }}
                     >
-                        <video
-                            key={heroVideo}
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'contain',
-                                display: 'block',
-                                filter: 'contrast(1.05) brightness(1.1)',
-                            }}
-                        >
-                            <source src={heroVideo} type="video/mp4" />
-                        </video>
+                        {/* Glow effect */}
+                        <div style={{
+                            position: 'absolute',
+                            top: '-50%',
+                            left: '-50%',
+                            width: '200%',
+                            height: '200%',
+                            background: 'radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 60%)',
+                            pointerEvents: 'none'
+                        }} />
+                        
+                        <h3 style={{ fontSize: '1.8rem', marginBottom: '1.5rem', color: 'var(--accent-color)', fontFamily: "'Space Grotesk', sans-serif" }}>
+                            About Me
+                        </h3>
+                        <p style={{ fontSize: '1.15rem', color: 'var(--text-color)', lineHeight: 1.8, opacity: 0.9, marginBottom: '1.5rem' }}>
+                            I'm currently pursuing an <span style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>MCA</span> with a solid foundation in Computer Science. I specialize in building responsive front-end applications and have a deep passion for <span style={{ color: 'var(--accent-color)', fontWeight: 'bold' }}>AI platform development</span>.
+                        </p>
+                        <p style={{ fontSize: '1.15rem', color: 'var(--text-color)', lineHeight: 1.8, opacity: 0.9, marginBottom: '2rem' }}>
+                            My expertise spans <span style={{ color: 'var(--secondary-color)', fontWeight: 'bold' }}>DOM manipulation, state management</span>, and <span style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>REST API integration</span> to deliver modern UI/UX experiences.
+                        </p>
+                        
+                        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                            {['Python', 'React', 'Machine Learning', 'UI/UX'].map((tech) => (
+                                <span key={tech} style={{
+                                    background: 'rgba(255,255,255,0.05)',
+                                    border: '1px solid var(--glass-border)',
+                                    padding: '0.5rem 1rem',
+                                    borderRadius: '50px',
+                                    fontSize: '0.9rem',
+                                    color: 'var(--primary-color)',
+                                    fontWeight: '600',
+                                    boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
+                                }}>
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
                     </motion.div>
                 </motion.div>
             </motion.div>
 
-            {/* Scroll Indicator */}
-            <motion.div
-                className="scroll-indicator"
-                style={{
-                    position: 'absolute',
-                    bottom: '2rem',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    color: 'var(--accent-color)'
-                }}
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-            >
-                <div style={{ width: '2px', height: '50px', background: 'linear-gradient(to bottom, var(--primary-color), transparent)' }} />
-                <span style={{ fontSize: '0.8rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>Scroll</span>
-            </motion.div>
+
         </section>
     );
 };

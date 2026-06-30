@@ -345,3 +345,58 @@ section {
     font-size: 0.9rem !important;
   }
 }
+
+/* GSAP Interactive Glass Card Styles */
+.glass-card-wrapper {
+  position: relative;
+  perspective: 1000px;
+  width: 100%;
+}
+
+.glass-card-interactive {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.glass-card-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  border-radius: 24px;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity 0.4s ease;
+}
+
+/* Linear sweep shine effect */
+.glass-card-shine-sweep {
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  pointer-events: none;
+  z-index: 5;
+  will-change: left;
+}
+

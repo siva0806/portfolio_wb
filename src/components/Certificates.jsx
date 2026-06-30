@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaAward, FaExternalLinkAlt } from 'react-icons/fa';
+import GlassCard from './GlassCard';
 import cert1 from '../assets/cert1.jpg';
 import cert2 from '../assets/cert2.jpg';
 import cert3 from '../assets/cert3.jpg';
@@ -66,101 +67,105 @@ const Certificates = () => {
                             type: "spring",
                             stiffness: 80
                         }}
-                        className="glass-panel"
-                        whileHover={{ y: -15, scale: 1.02 }}
-                        style={{
-                            overflow: 'hidden',
-                            padding: 0, // Image will take full top space
-                            display: 'flex',
-                            flexDirection: 'column',
-                            border: `1px solid ${cert.color}30`
-                        }}
+                        style={{ width: '100%' }}
                     >
-                        {/* Certificate Image Container */}
-                        <div style={{ 
-                            width: '100%', 
-                            height: '240px', 
-                            overflow: 'hidden',
-                            position: 'relative'
-                        }}>
-                            <img 
-                                src={cert.image} 
-                                alt={cert.title}
-                                style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    objectFit: 'cover',
-                                    transition: 'transform 0.5s ease'
-                                }}
-                            />
-                            {/* Overlay on Image */}
-                            <div style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                right: 0,
-                                bottom: 0,
-                                background: `linear-gradient(to bottom, transparent 60%, ${cert.color}40)`,
-                            }} />
-                            
-                            <div style={{
-                                position: 'absolute',
-                                top: '1rem',
-                                right: '1rem',
-                                background: 'rgba(0,0,0,0.6)',
-                                padding: '0.5rem',
-                                borderRadius: '50%',
-                                color: cert.color,
-                                backdropFilter: 'blur(5px)'
+                        <GlassCard
+                            interactive={true}
+                            sweepOnScroll={true}
+                            style={{
+                                padding: 0,
+                                overflow: 'hidden',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                border: `1px solid ${cert.color}30`
+                            }}
+                        >
+                            {/* Certificate Image Container */}
+                            <div style={{ 
+                                width: '100%', 
+                                height: '240px', 
+                                overflow: 'hidden',
+                                position: 'relative'
                             }}>
-                                <FaAward fontSize="1.2rem" />
+                                <img 
+                                    src={cert.image} 
+                                    alt={cert.title}
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        transition: 'transform 0.5s ease'
+                                    }}
+                                />
+                                {/* Overlay on Image */}
+                                <div style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    left: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    background: `linear-gradient(to bottom, transparent 60%, ${cert.color}40)`,
+                                }} />
+                                
+                                <div style={{
+                                    position: 'absolute',
+                                    top: '1rem',
+                                    right: '1rem',
+                                    background: 'rgba(0,0,0,0.6)',
+                                    padding: '0.5rem',
+                                    borderRadius: '50%',
+                                    color: cert.color,
+                                    backdropFilter: 'blur(5px)'
+                                }}>
+                                    <FaAward fontSize="1.2rem" />
+                                </div>
                             </div>
-                        </div>
 
-                        {/* Content below image */}
-                        <div style={{ padding: '2rem' }}>
-                            <h3 style={{
-                                fontSize: '1.4rem',
-                                marginBottom: '0.75rem',
-                                color: cert.color,
-                                fontWeight: '800'
-                            }}>
-                                {cert.title}
-                            </h3>
-                            <p style={{
-                                color: 'var(--text-color)',
-                                opacity: 0.7,
-                                fontSize: '1rem',
-                                fontWeight: '600',
-                                marginBottom: '1.5rem'
-                            }}>
-                                {cert.issuer} • {cert.date}
-                            </p>
-                            
-                            <motion.div
-                                whileHover={{ x: 5 }}
-                                style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    color: 'var(--accent-color)',
-                                    fontWeight: '700',
-                                    fontSize: '0.9rem',
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '1px'
-                                }}
-                            >
-                                Validated Degree <FaExternalLinkAlt fontSize="0.8rem" />
-                            </motion.div>
-                        </div>
+                            {/* Content below image */}
+                            <div style={{ padding: '2rem' }}>
+                                <h3 style={{
+                                    fontSize: '1.4rem',
+                                    marginBottom: '0.75rem',
+                                    color: cert.color,
+                                    fontWeight: '800'
+                                }}>
+                                    {cert.title}
+                                </h3>
+                                <p style={{
+                                    color: 'var(--text-color)',
+                                    opacity: 0.7,
+                                    fontSize: '1rem',
+                                    fontWeight: '600',
+                                    marginBottom: '1.5rem'
+                                }}>
+                                    {cert.issuer} • {cert.date}
+                                </p>
+                                
+                                <motion.div
+                                    whileHover={{ x: 5 }}
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.5rem',
+                                        color: 'var(--accent-color)',
+                                        fontWeight: '700',
+                                        fontSize: '0.9rem',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '1px'
+                                    }}
+                                >
+                                    Validated Degree <FaExternalLinkAlt fontSize="0.8rem" />
+                                </motion.div>
+                            </div>
 
-                        {/* Bottom Glow Line */}
-                        <div style={{
-                            height: '5px',
-                            width: '100%',
-                            background: cert.color,
-                            boxShadow: `0 0 15px ${cert.color}`
-                        }} />
+                            {/* Bottom Glow Line */}
+                            <div style={{
+                                height: '5px',
+                                width: '100%',
+                                background: cert.color,
+                                boxShadow: `0 0 15px ${cert.color}`
+                            }} />
+                        </GlassCard>
                     </motion.div>
                 ))}
             </div>

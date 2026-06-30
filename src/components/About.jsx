@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaLightbulb, FaCode, FaPalette, FaRocket } from 'react-icons/fa';
+import GlassCard from './GlassCard';
 
 const About = () => {
     const skills = [
@@ -113,7 +114,7 @@ const About = () => {
                     style={{ flex: '1 1 500px' }}
                     className="about-content"
                 >
-                    <div className="glass-panel shine-effect" style={{ padding: '3.5rem 2.5rem', position: 'relative' }}>
+                    <GlassCard className="shine-effect" style={{ padding: '3.5rem 2.5rem', position: 'relative' }}>
                         <h3 style={{ fontSize: '2rem', marginBottom: '2rem', fontFamily: "'Space Grotesk', serif" }}>Education</h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                             {[
@@ -134,7 +135,7 @@ const About = () => {
                                 </motion.div>
                             ))}
                         </div>
-                    </div>
+                    </GlassCard>
                 </motion.div>
             </div>
         </section>

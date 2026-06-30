@@ -1,60 +1,97 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { FaStar, FaCode, FaLightbulb, FaRocket } from 'react-icons/fa';
-
+import gsap from 'gsap';
+import GlassCard from './GlassCard';
 
 const Hero = () => {
+    const heroRef = useRef(null);
     const { scrollY } = useScroll();
+    
+    // We keep the scroll-linked transform for the container using Framer Motion
     const y1 = useTransform(scrollY, [0, 500], [0, 200]);
     const opacityScroll = useTransform(scrollY, [0, 300], [1, 0]);
     const scaleScroll = useTransform(scrollY, [0, 300], [1, 0.8]);
 
-    // Animation Variants
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: { 
-            opacity: 1, 
-            transition: { 
-                staggerChildren: 0.15
-            } 
-        }
-    };
-
-    const itemVariants = {
-        hidden: { y: 30, opacity: 0 },
-        visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100 } }
-    };
-
     const floatingIcons = [
-        { Icon: FaStar, top: '15%', left: '8%', delay: 0 },
-        { Icon: FaCode, top: '65%', left: '12%', delay: 1 },
-        { Icon: FaLightbulb, top: '25%', right: '10%', delay: 0.5 },
-        { Icon: FaRocket, top: '70%', right: '8%', delay: 1.5 }
+        { Icon: FaStar, top: '15%', left: '8%' },
+        { Icon: FaCode, top: '65%', left: '12%' },
+        { Icon: FaLightbulb, top: '25%', right: '10%' },
+        { Icon: FaRocket, top: '70%', right: '8%' }
     ];
 
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.8 } });
+
+            // Initial states
+            gsap.set('.gsap-hero-badge', { opacity: 0, y: 30 });
+            gsap.set('.gsap-hero-title', { opacity: 0, y: 40 });
+            gsap.set('.gsap-hero-desc', { opacity: 0, y: 30 });
+            gsap.set('.gsap-hero-btn', { opacity: 0, y: 20 });
+            gsap.set('.gsap-hero-card', { opacity: 0, scale: 0.9, y: 40 });
+            gsap.set('.gsap-hero-icon', { opacity: 0, scale: 0 });
+
+            // Timeline Sequence
+            tl.to('.gsap-hero-badge', { opacity: 1, y: 0, delay: 0.2 })
+              .to('.gsap-hero-title', { opacity: 1, y: 0 }, '-=0.6')
+              .to('.gsap-hero-desc', { opacity: 1, y: 0 }, '-=0.6')
+              .to('.gsap-hero-btn', { opacity: 1, y: 0, stagger: 0.15 }, '-=0.6')
+              .to('.gsap-hero-card', { opacity: 1, y: 0, scale: 1, duration: 1, ease: 'back.out(1.2)' }, '-=0.7')
+              .to('.gsap-hero-icon', { 
+                  opacity: 0.2, 
+                  scale: 1, 
+                  stagger: 0.1,
+                  ease: 'back.out(1.5)',
+                  onComplete: () => {
+                      // Staggered floating micro-animations
+                      floatingIcons.forEach((_, index) => {
+                          gsap.to(`.gsap-icon-${index}`, {
+                              y: -20,
+                              duration: 3 + index * 0.5,
+                              repeat: -1,
+                              yoyo: true,
+                              ease: 'sine.inOut'
+                          });
+                      });
+                  }
+              }, '-=0.8');
+        }, heroRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section id="home" className="hero-section" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+        <section 
+            id="home" 
+            ref={heroRef}
+            className="hero-section" 
+            style={{ 
+                minHeight: '100vh', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                position: 'relative', 
+                overflow: 'hidden' 
+            }}
+        >
             {/* Background Decorations */}
-            {floatingIcons.map(({ Icon, top, left, right, delay }, index) => (
-                <motion.div
+            {floatingIcons.map(({ Icon, top, left, right }, index) => (
+                <div
                     key={index}
-                    animate={{ y: [0, -20, 0], opacity: [0.1, 0.2, 0.1] }}
-                    transition={{ duration: 4, repeat: Infinity, delay }}
+                    className={`gsap-hero-icon gsap-icon-${index}`}
                     style={{
                         position: 'absolute', top, left, right, zIndex: 0,
-                        fontSize: '3rem', color: 'var(--primary-color)', opacity: 0.2
+                        fontSize: '3rem', color: 'var(--primary-color)', opacity: 0
                     }}
                 >
                     <Icon />
-                </motion.div>
+                </div>
             ))}
 
             <motion.div
                 className="hero-container"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
                 style={{ 
                     y: y1, 
                     opacity: opacityScroll, 
@@ -62,29 +99,36 @@ const Hero = () => {
                 }}
             >
                 {/* Text Content */}
-                <motion.div className="hero-text" variants={itemVariants}>
-                    <motion.div
+                <div className="hero-text">
+                    <div
+                        className="gsap-hero-badge"
                         style={{
                             fontSize: '1.4rem', color: 'var(--accent-color)', fontWeight: '700',
                             letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '1.5rem'
                         }}
                     >
                         ✨ Creative Developer
-                    </motion.div>
+                    </div>
 
-                    <h1 style={{ lineHeight: 1.1, marginBottom: '2rem', fontSize: 'var(--h1-size, 4.5rem)', fontWeight: 900 }}>
+                    <h1 
+                        className="gsap-hero-title"
+                        style={{ lineHeight: 1.1, marginBottom: '2rem', fontSize: 'var(--h1-size, 4.5rem)', fontWeight: 900 }}
+                    >
                         Hi, I'm <br />
                         <span className="gradient-text">Siva K</span>
                     </h1>
 
-                    <p style={{ fontSize: '1.35rem', color: 'var(--text-color)', opacity: 0.9, lineHeight: 1.8, marginBottom: '3rem', maxWidth: '650px' }}>
+                    <p 
+                        className="gsap-hero-desc"
+                        style={{ fontSize: '1.35rem', color: 'var(--text-color)', opacity: 0.9, lineHeight: 1.8, marginBottom: '3rem', maxWidth: '650px' }}
+                    >
                         Specializing in 
                         <span style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}> Python, React, and Machine Learning</span>. 
                         Crafting intelligent and visually stunning user experiences.
                     </p>
 
                     <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }} className="hero-buttons">
-                        <Link to="projects" smooth={true} duration={800} className="glow-button"
+                        <Link to="projects" smooth={true} duration={800} className="glow-button gsap-hero-btn"
                             style={{
                                 padding: '1.2rem 3rem', background: 'var(--primary-color)', color: '#fff',
                                 borderRadius: '50px', fontWeight: 'bold', cursor: 'pointer', fontSize: '1.1rem'
@@ -92,7 +136,7 @@ const Hero = () => {
                         >
                             View Projects
                         </Link>
-                        <Link to="contact" smooth={true} duration={800}
+                        <Link to="contact" smooth={true} duration={800} className="gsap-hero-btn"
                             style={{
                                 padding: '1.2rem 3rem', background: 'transparent', color: 'var(--primary-color)',
                                 border: '2px solid var(--primary-color)', borderRadius: '50px', fontWeight: 'bold', cursor: 'pointer', fontSize: '1.1rem'
@@ -101,17 +145,14 @@ const Hero = () => {
                             Contact Me
                         </Link>
                     </div>
-                </motion.div>
+                </div>
 
                 {/* Description Visual Content */}
-                <motion.div 
-                    className="hero-visual" 
-                    variants={itemVariants}
-                >
-                    <motion.div
-                        className="glass-panel shine-effect"
-                        animate={{ y: [-10, 10, -10] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                <div className="hero-visual gsap-hero-card">
+                    <GlassCard
+                        className="shine-effect"
+                        interactive={true}
+                        sweepOnScroll={true}
                         style={{
                             position: 'relative',
                             width: '100%',
@@ -162,16 +203,15 @@ const Hero = () => {
                                 </span>
                             ))}
                         </div>
-                    </motion.div>
-                </motion.div>
+                    </GlassCard>
+                </div>
             </motion.div>
-
-
         </section>
     );
 };
 
 export default Hero;
+
 
 
 

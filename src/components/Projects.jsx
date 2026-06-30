@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import GlassCard from './GlassCard';
 
 const projects = [
     {
@@ -56,10 +57,9 @@ const Projects = () => {
                         key={project.id}
                         initial={{
                             opacity: 0,
-                            x: index % 2 === 0 ? -100 : 100,
-                            rotateY: index % 2 === 0 ? -20 : 20
+                            x: index % 2 === 0 ? -100 : 100
                         }}
-                        whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{
                             delay: index * 0.2,
@@ -67,84 +67,85 @@ const Projects = () => {
                             type: "spring",
                             stiffness: 80
                         }}
-                        className="glass-panel"
-                        whileHover={{
-                            y: -15,
-                            scale: 1.03,
-                            rotateZ: index % 2 === 0 ? 1 : -1
-                        }}
-                        style={{
-                            cursor: 'pointer',
-                            position: 'relative',
-                            overflow: 'hidden'
-                        }}
+                        style={{ width: '100%' }}
                     >
-                        {/* Gradient accent line */}
-                        <div style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            height: '4px',
-                            background: project.gradient,
-                            boxShadow: `0 0 16px ${project.gradient}`
-                        }} />
-
-                        <h3 style={{
-                            fontSize: '1.8rem',
-                            marginBottom: '1.2rem',
-                            marginTop: '0.5rem',
-                            background: project.gradient,
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            fontWeight: '800'
-                        }}>
-                            {project.title}
-                        </h3>
-
-                        <p style={{ color: 'var(--text-color)', marginBottom: '2rem', lineHeight: '1.8', fontSize: '1.1rem', opacity: 0.9 }}>
-                            {project.description}
-                        </p>
-
-                        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-                            {project.tags.map(tag => (
-                                <motion.span
-                                    key={tag}
-                                    whileHover={{ scale: 1.1, y: -3 }}
-                                    style={{
-                                        fontSize: '0.9rem',
-                                        padding: '0.5rem 1rem',
-                                        borderRadius: '25px',
-                                        background: 'var(--glass-bg)',
-                                        color: 'var(--primary-color)',
-                                        border: '1px solid var(--primary-color)',
-                                        fontWeight: '600',
-                                        boxShadow: '0 0 5px var(--glass-border)',
-                                        cursor: 'pointer'
-                                    }}
-                                >
-                                    {tag}
-                                </motion.span>
-                            ))}
-                        </div>
-
-                        <motion.a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ x: 5 }}
+                        <GlassCard
+                            interactive={true}
+                            sweepOnScroll={true}
                             style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.5rem',
-                                color: 'var(--accent-color)',
-                                fontWeight: '700',
-                                fontSize: '1rem',
-                                textDecoration: 'none'
+                                cursor: 'pointer',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                padding: '2rem'
                             }}
                         >
-                            View Project <FaExternalLinkAlt />
-                        </motion.a>
+                            {/* Gradient accent line */}
+                            <div style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                height: '4px',
+                                background: project.gradient,
+                                boxShadow: `0 0 16px ${project.gradient}`
+                            }} />
+
+                            <h3 style={{
+                                fontSize: '1.8rem',
+                                marginBottom: '1.2rem',
+                                marginTop: '0.5rem',
+                                background: project.gradient,
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                fontWeight: '800'
+                            }}>
+                                {project.title}
+                            </h3>
+
+                            <p style={{ color: 'var(--text-color)', marginBottom: '2rem', lineHeight: '1.8', fontSize: '1.1rem', opacity: 0.9 }}>
+                                {project.description}
+                            </p>
+
+                            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+                                {project.tags.map(tag => (
+                                    <motion.span
+                                        key={tag}
+                                        whileHover={{ scale: 1.1, y: -3 }}
+                                        style={{
+                                            fontSize: '0.9rem',
+                                            padding: '0.5rem 1rem',
+                                            borderRadius: '25px',
+                                            background: 'var(--glass-bg)',
+                                            color: 'var(--primary-color)',
+                                            border: '1px solid var(--primary-color)',
+                                            fontWeight: '600',
+                                            boxShadow: '0 0 5px var(--glass-border)',
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        {tag}
+                                    </motion.span>
+                                ))}
+                            </div>
+
+                            <motion.a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ x: 5 }}
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    color: 'var(--accent-color)',
+                                    fontWeight: '700',
+                                    fontSize: '1rem',
+                                    textDecoration: 'none'
+                                }}
+                            >
+                                View Project <FaExternalLinkAlt />
+                            </motion.a>
+                        </GlassCard>
                     </motion.div>
                 ))}
             </div>

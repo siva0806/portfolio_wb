@@ -40,7 +40,7 @@ const About = () => {
                         transition={{ delay: 0.4, duration: 0.6 }}
                         style={{ fontSize: '1.25rem', lineHeight: '2', color: 'var(--text-color)', marginBottom: '1.5rem', opacity: 0.9 }}
                     >
-                        I'm currently pursuing <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>MCA</span> with a solid academic background in 
+                        I have completed my <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>MCA</span> with a solid academic background in 
                         <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}> Computer Science</span>. 
                         Proficient in core front-end concepts and hands-on experience in building 
                         <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}> responsive applications</span>.
@@ -118,7 +118,7 @@ const About = () => {
                         <h3 style={{ fontSize: '2rem', marginBottom: '2rem', fontFamily: "'Space Grotesk', serif" }}>Education</h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                             {[
-                                { title: 'MCA (On Going)', school: 'Dhanalakshmi Srinivasan Engineering College', score: 'SGPA: 7.5', color: 'var(--primary-color)' },
+                                { title: 'MCA', school: 'Dhanalakshmi Srinivasan Engineering College', score: 'SGPA: 7.5', color: 'var(--primary-color)' },
                                 { title: 'B.Sc. Computer Science', school: "St Joseph's College, Trichy", score: 'CGPA: 7.4', color: 'var(--accent-color)' }
                             ].map((edu, index) => (
                                 <motion.div

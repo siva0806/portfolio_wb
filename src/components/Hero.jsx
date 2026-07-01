@@ -204,7 +204,7 @@ const Hero = () => {
                             About Me
                         </h3>
                         <p style={{ fontSize: '1.15rem', color: 'var(--text-color)', lineHeight: 1.8, opacity: 0.9, marginBottom: '1.5rem' }}>
-                            I'm currently pursuing an <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>MCA</span> with a solid foundation in Computer Science. I specialize in building responsive front-end applications and have a deep passion for <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>AI platform development</span>.
+                            I have completed my <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>MCA</span> with a solid foundation in Computer Science. I specialize in building responsive front-end applications and have a deep passion for <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>AI platform development</span>.
                         </p>
                         <p style={{ fontSize: '1.15rem', color: 'var(--text-color)', lineHeight: 1.8, opacity: 0.9, marginBottom: '2rem' }}>
                             My expertise spans <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>DOM manipulation, state management</span>, and <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>REST API integration</span> to deliver modern UI/UX experiences.

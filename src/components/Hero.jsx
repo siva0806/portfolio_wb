@@ -4,6 +4,7 @@ import { Link } from 'react-scroll';
 import { FaStar, FaCode, FaLightbulb, FaRocket } from 'react-icons/fa';
 import gsap from 'gsap';
 import GlassCard from './GlassCard';
+import heroVideo from '../assets/hero-v3.mp4';
 
 const Hero = () => {
     const heroRef = useRef(null);
@@ -76,13 +77,35 @@ const Hero = () => {
                 overflow: 'hidden' 
             }}
         >
+            {/* Background Video */}
+            <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    zIndex: 1,
+                    opacity: 0.45,
+                    pointerEvents: 'none',
+                    filter: 'brightness(0.55) contrast(1.1)'
+                }}
+            >
+                <source src={heroVideo} type="video/mp4" />
+            </video>
+
             {/* Background Decorations */}
             {floatingIcons.map(({ Icon, top, left, right }, index) => (
                 <div
                     key={index}
                     className={`gsap-hero-icon gsap-icon-${index}`}
                     style={{
-                        position: 'absolute', top, left, right, zIndex: 0,
+                        position: 'absolute', top, left, right, zIndex: 2,
                         fontSize: '3rem', color: 'var(--primary-color)', opacity: 0
                     }}
                 >
@@ -103,7 +126,7 @@ const Hero = () => {
                     <div
                         className="gsap-hero-badge"
                         style={{
-                            fontSize: '1.4rem', color: 'var(--accent-color)', fontWeight: '700',
+                            fontSize: '1.4rem', color: 'var(--accent-pink)', fontWeight: '700',
                             letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '1.5rem'
                         }}
                     >
@@ -123,7 +146,7 @@ const Hero = () => {
                         style={{ fontSize: '1.35rem', color: 'var(--text-color)', opacity: 0.9, lineHeight: 1.8, marginBottom: '3rem', maxWidth: '650px' }}
                     >
                         Specializing in 
-                        <span style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}> Python, React, and Machine Learning</span>. 
+                        <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}> Python, React, and Machine Learning</span>. 
                         Crafting intelligent and visually stunning user experiences.
                     </p>
 
@@ -173,31 +196,31 @@ const Hero = () => {
                             left: '-50%',
                             width: '200%',
                             height: '200%',
-                            background: 'radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 60%)',
+                            background: 'radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 60%)',
                             pointerEvents: 'none'
                         }} />
                         
-                        <h3 style={{ fontSize: '1.8rem', marginBottom: '1.5rem', color: 'var(--accent-color)', fontFamily: "'Space Grotesk', sans-serif" }}>
+                        <h3 style={{ fontSize: '1.8rem', marginBottom: '1.5rem', color: 'var(--accent-pink)', fontFamily: "'Space Grotesk', sans-serif" }}>
                             About Me
                         </h3>
                         <p style={{ fontSize: '1.15rem', color: 'var(--text-color)', lineHeight: 1.8, opacity: 0.9, marginBottom: '1.5rem' }}>
-                            I'm currently pursuing an <span style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>MCA</span> with a solid foundation in Computer Science. I specialize in building responsive front-end applications and have a deep passion for <span style={{ color: 'var(--accent-color)', fontWeight: 'bold' }}>AI platform development</span>.
+                            I'm currently pursuing an <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>MCA</span> with a solid foundation in Computer Science. I specialize in building responsive front-end applications and have a deep passion for <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>AI platform development</span>.
                         </p>
                         <p style={{ fontSize: '1.15rem', color: 'var(--text-color)', lineHeight: 1.8, opacity: 0.9, marginBottom: '2rem' }}>
-                            My expertise spans <span style={{ color: 'var(--secondary-color)', fontWeight: 'bold' }}>DOM manipulation, state management</span>, and <span style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>REST API integration</span> to deliver modern UI/UX experiences.
+                            My expertise spans <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>DOM manipulation, state management</span>, and <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>REST API integration</span> to deliver modern UI/UX experiences.
                         </p>
                         
                         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                             {['Python', 'React', 'Machine Learning', 'UI/UX'].map((tech) => (
                                 <span key={tech} style={{
                                     background: 'rgba(255,255,255,0.05)',
-                                    border: '1px solid var(--glass-border)',
+                                    border: '1px solid var(--accent-pink)',
                                     padding: '0.5rem 1rem',
                                     borderRadius: '50px',
                                     fontSize: '0.9rem',
-                                    color: 'var(--primary-color)',
+                                    color: 'var(--accent-pink)',
                                     fontWeight: '600',
-                                    boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
+                                    boxShadow: '0 2px 10px var(--glow-pink)'
                                 }}>
                                     {tech}
                                 </span>

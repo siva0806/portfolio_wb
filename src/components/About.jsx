@@ -40,10 +40,10 @@ const About = () => {
                         transition={{ delay: 0.4, duration: 0.6 }}
                         style={{ fontSize: '1.25rem', lineHeight: '2', color: 'var(--text-color)', marginBottom: '1.5rem', opacity: 0.9 }}
                     >
-                        I'm currently pursuing <span style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>MCA</span> with a solid academic background in 
-                        <span style={{ color: 'var(--accent-color)', fontWeight: 'bold' }}> Computer Science</span>. 
+                        I'm currently pursuing <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}>MCA</span> with a solid academic background in 
+                        <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}> Computer Science</span>. 
                         Proficient in core front-end concepts and hands-on experience in building 
-                        <span style={{ color: 'var(--secondary-color)', fontWeight: 'bold' }}> responsive applications</span>.
+                        <span style={{ color: 'var(--accent-pink)', fontWeight: 'bold' }}> responsive applications</span>.
                     </motion.p>
 
                     <motion.p
@@ -53,9 +53,9 @@ const About = () => {
                         transition={{ delay: 0.5, duration: 0.6 }}
                         style={{ fontSize: '1.25rem', lineHeight: '2', color: 'var(--text-color)', marginBottom: '2.5rem', opacity: 0.9 }}
                     >
-                        Experienced in <span style={{ color: 'var(--primary-color)' }}>DOM manipulation</span>, 
-                        <span style={{ color: 'var(--accent-color)' }}> state management</span>, and 
-                        <span style={{ color: 'var(--secondary-color)' }}> REST API integration</span>. 
+                        Experienced in <span style={{ color: 'var(--accent-pink)' }}>DOM manipulation</span>, 
+                        <span style={{ color: 'var(--accent-pink)' }}> state management</span>, and 
+                        <span style={{ color: 'var(--accent-pink)' }}> REST API integration</span>. 
                         Passionate about AI platform development and modern UI/UX.
                     </motion.p>
 

@@ -116,10 +116,10 @@ const Projects = () => {
                                             padding: '0.5rem 1rem',
                                             borderRadius: '25px',
                                             background: 'var(--glass-bg)',
-                                            color: 'var(--primary-color)',
-                                            border: '1px solid var(--primary-color)',
+                                            color: 'var(--accent-pink)',
+                                            border: '1px solid var(--accent-pink)',
                                             fontWeight: '600',
-                                            boxShadow: '0 0 5px var(--glass-border)',
+                                            boxShadow: '0 0 8px var(--glow-pink)',
                                             cursor: 'pointer'
                                         }}
                                     >

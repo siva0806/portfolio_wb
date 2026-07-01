@@ -147,7 +147,7 @@ const Certificates = () => {
                                         display: 'flex',
                                         alignItems: 'center',
                                         gap: '0.5rem',
-                                        color: 'var(--accent-color)',
+                                        color: 'var(--accent-pink)',
                                         fontWeight: '700',
                                         fontSize: '0.9rem',
                                         textTransform: 'uppercase',

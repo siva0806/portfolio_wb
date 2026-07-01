@@ -33,7 +33,7 @@ const Header = () => {
         justifyContent: 'space-between',
         alignItems: 'center',
         borderBottom: scrolled ? '1px solid var(--glass-border)' : 'none',
-        boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.4), 0 0 10px var(--glow-cyan)' : 'none',
+        boxShadow: scrolled ? 'var(--nav-shadow), 0 0 10px var(--glow-cyan)' : 'none',
         transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
       }}
     >

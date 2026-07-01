@@ -1,21 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Grotesk:wght@700;900&display=swap');
 
 :root {
-  /* Deep Black Theme for better video blending */
+  /* General Light Background Theme */
+  --bg-color: #ffffff; /* True White */
+  --bg-secondary: #f9fafb; /* Light Gray */
+  --bg-tertiary: #f3f4f6; /* Soft Gray */
+  --text-color: #1f2937; /* Dark Slate Gray */
+  --primary-color: #0284c7; /* Sky Blue (high readability on white) */
+  --secondary-color: #0369a1; /* Deep Sky Blue */
+  --accent-color: #0284c7;
+  --accent-2: #075985;
+
+  /* Glass/Card shadows and effects for Light Theme */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glow-cyan: rgba(56, 189, 248, 0.15);
+  --glow-blue: rgba(59, 130, 246, 0.05);
+  --accent-pink: #0284c7; /* High contrast highlight for text on white */
+  --glow-pink: rgba(2, 132, 199, 0.15);
+
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Local dark theme variables scoped to the Hero section */
+#home {
   --bg-color: #000000; /* True Black */
   --bg-secondary: #0a0a0a; /* Ultra Dark Gray */
   --bg-tertiary: #111111; /* Dark Charcoal */
-  --text-color: #fff7ed; /* Soft Cream */
-  --primary-color: #f97316; /* Vibrant Sunset Orange */
-  --secondary-color: #ea580c; /* Deep Burnt Orange */
-  --accent-color: #fbbf24; /* Warm Amber Gold */
-  --accent-2: #c2410c; /* Rust Orange */
+  --text-color: #f0f9ff; /* Soft Light Blue */
+  --primary-color: #38bdf8; /* Vibrant Sky Blue */
+  --secondary-color: #0284c7; /* Deep Sky Blue */
+  --accent-color: #00d8ff; /* Brilliant Neon Cyan */
+  --accent-2: #0369a1; /* Dark Sky Blue Accent */
 
-  /* Warm Glow Effects */
-  --glass-bg: rgba(249, 115, 22, 0.05);
-  --glass-border: rgba(249, 115, 22, 0.15);
-  --glow-cyan: rgba(251, 191, 36, 0.15);
-  --glow-blue: rgba(234, 88, 12, 0.1);
+  /* Light Blue Glow Effects */
+  --glass-bg: rgba(56, 189, 248, 0.05);
+  --glass-border: rgba(56, 189, 248, 0.15);
+  --glow-cyan: rgba(0, 229, 255, 0.15);
+  --glow-blue: rgba(2, 132, 199, 0.1);
+  --accent-pink: #00e5ff; /* Cyan highlight */
+  --glow-pink: rgba(0, 229, 255, 0.25);
+
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  --card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+  background: var(--bg-color) !important;
 }
 
 * {
@@ -45,8 +77,8 @@ body::before {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(234, 88, 12, 0.05) 0%, transparent 40%);
+    radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.05) 0%, transparent 40%);
   z-index: -1;
 }
 
@@ -90,7 +122,7 @@ section {
   border: 1px solid var(--glass-border);
   border-radius: 24px;
   padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--card-shadow);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   /* Faster transition */
   position: relative;
@@ -99,7 +131,7 @@ section {
 
 .glass-panel:hover {
   border-color: var(--primary-color);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px var(--glow-cyan);
+  box-shadow: var(--card-shadow-hover), 0 0 20px var(--glow-cyan);
   transform: translateY(-5px);
 }
 
@@ -111,7 +143,16 @@ section {
   font-weight: 900;
 }
 
-/* Nav Link */
+/* Navigation Header Styles */
+.header-container {
+  color: #ffffff; /* Transparent mode link color over dark Hero */
+  transition: all 0.2s ease;
+}
+
+.header-container.scrolled {
+  color: var(--text-color) !important; /* Scrolled/Light theme text color */
+}
+
 .nav-list {
   display: flex;
   gap: 2.5rem;
